@@ -1,0 +1,479 @@
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.Clear-btn {
+  /* /* background-color: #f1f1f1; */
+  background-color: rgb(15, 68, 148);
+  color: white;
+  padding: 7px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all ease-in-out 0.5s;
+  border: none;
+  font-weight: bold;
+}
+
+.Clear-btn:hover {
+  background-color: rgb(28, 87, 175);
+}
+
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width : 100%;
+  margin-top: 10px;
+}
+
+.lookup-input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+  /* font-family: Segoe UI, Arial, sans-serif; */
+  background-color: #f3f2f1;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #005a9e;
+  cursor: pointer;
+}
+
+.lookup-input:focus {
+  border-color: #0078d4;
+  outline: none;
+  box-shadow: 0 0 2px #0078d4;
+  background-color: white;
+}
+
+/* The clear button */
+.lookup-clear-button {
+  padding: 4px 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #888; /* Default color */
+  background: none; /* Transparent background */
+  border: none; /* No border */
+  cursor: pointer; /* Show pointer cursor on hover */
+  margin-left: -30px;
+}
+
+.lookup-clear-button:hover {
+  color: #005a9e; /* Change to red on hover */
+}
+
+/* main lookup input */
+.main-lookup-input {
+  flex-grow: 1;
+  padding: 8px 12px;
+  font-size: 14px;
+  text-decoration: underline;
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
+  box-sizing: border-box;
+  /* font-family: Segoe UI, Arial, sans-serif; */
+  background-color: #f3f2f1;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #005a9e;
+  cursor: pointer;
+  width: 80px; /* Set a fixed width for the input field */
+  white-space: nowrap; /* Prevent text from wrapping to the next line */
+  overflow: hidden; /* Hide any overflow content */
+  text-overflow: ellipsis; /* Add "..." when the text exceeds the width */
+
+}  
+
+.main-lookup-input:focus {
+  border-color: #0078d4;
+  outline: none;
+  box-shadow: 0 0 2px #0078d4;
+  background-color: white;
+}
+
+.search-button {
+  margin-left: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  background-color: #0078d4;
+  color: white;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: #005a9e;
+}
+
+.account-lookup-modal {
+  height: 80%;
+  width: 85%;
+  /* margin: 5% auto; */
+  background-color: white;
+  padding: 20px 20px;
+  border-radius: 10px;
+  max-height: 70%;
+  overflow: hidden;
+  /* overflow-y: auto;  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* font-family: "Segoe UI", "Segoe UI Web (West European)", -apple-system,
+  BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif; */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+  backdrop-filter: blur(5px); /* Blurred background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  /* background-color: #f1f1f1; */
+  background-color: rgb(15, 68, 148);
+  /* background-color: #0078d4; */
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  width : 100%;
+ 
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+  /* font-weight: bold; */
+}
+
+   /* --- Table Container: Scrollable tbody --- */
+   .table-container {
+    margin: 10px 0px;
+    /* flex-grow: 1; */
+    width: 100%;
+    background-color: #f4f4f4;
+    /* border: 2px solid ; */
+    border-radius: 6px;
+    padding: 10px;
+    max-height: 47vh;
+    min-height: 47vh;
+    /* overflow-y: auto; */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Backdrop Shadow */
+   }
+
+   /* --- Table Styling --- */
+   .account-Table {
+    width: 100%;
+    border-collapse: collapse;
+    /* background: white; */
+    border: 1px solid #ddd;
+    
+   }
+
+   /* --- Table Headers --- */
+    .table-container .account-Table .Table-header {
+    /* background-color: #e9e6e6; */
+    background-color: rgb(15, 68, 148);
+    /* background-color: #0078d4; */
+    color: white;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #ccc;
+    /* background-color: #0047ab; */
+    z-index: 2;
+    text-transform: uppercase;
+    /* border-bottom: 1px solid #ccc; */
+   
+   }
+
+   .account-Table th {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+    /* width: 250px; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   }
+
+   /* --- Table Rows & Cells --- */
+   .account-Table td {
+    padding: 5px;
+    border: 1px solid #ddd;
+
+   }
+
+   /* --- Fix: Scrollable tbody but Keep Footer Visible --- */
+   .tbody-scroll {
+    display: block;
+    max-height: 30vh;
+    min-height: 30vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+   }
+
+   .tbody-scroll tr {
+    display: table; /* Ensure rows behave like table rows */
+    width: 100%;
+    table-layout: fixed; /* Ensure consistent column widths */
+  }
+
+   tbody tr:hover {
+    background-color: #e4dfdf;
+    color : black;
+   }
+
+   tbody tr {
+    transition: all ease-in-out 0.5s;
+   }
+   .account-Table thead,
+   .account-Table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    cursor: pointer;
+   }
+
+   .account-Table thead,
+   .account-Table td {
+    width: 100%;
+
+   }
+
+   .account-Table td:nth-child(1) {
+    /* width : 300px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   }
+
+   .account-Table td:nth-child(2) {
+    /* width : 300px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   }
+   .account-Table td:nth-child(3) {
+    /* width : 400px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   }
+
+   .account-Table td:nth-child(4) {
+    /* width : 400px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   }
+
+   .account-Table td:nth-child(5) {
+    /* width : 300px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   }
+
+   .account-Table td:nth-child(6) {
+    /* width : 300px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   }
+
+   .account-Table td:nth-child(7) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   }
+
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination-button {
+  padding: 6px 8px;
+  background-color: #008080;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all ease-in-out 0.5s;
+}
+
+.pagination-button:hover {
+  background-color: #069999;
+}
+
+span {
+  font: bold;
+  /* font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif; */
+  color: black;
+}
+
+.create-contact-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 8px 8px;
+  /* background-color: #008080; */
+  border-bottom: 1px solid #ccc;
+  /* background-color: #e3e1e1; */
+  /* color: white; */
+  background-color: rgb(15, 68, 148);
+  /* background-color: #0078d4; */
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all ease-in-out 0.5s;
+  border: none;
+  font-weight: bold;
+}
+
+.create-contact-button:hover {
+  background-color: rgb(28, 87, 175);
+}
+
+.pagination-div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between; /* Align buttons on opposite sides */
+  padding: 10px;
+  border-top: 1px solid #ddd; /* Optional styling */
+  background-color: #f9f9f9; /* Optional background color */
+  position: sticky;
+  bottom: 0;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+  /* Webkit Scrollbar Styling */
+  .div-tbody-container::-webkit-scrollbar {
+    width: 2px; /* Set the width of the vertical scrollbar */
+    height: 5px; /* Optional: Set the height of the horizontal scrollbar */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Thumb (scrollbar handle) color */
+    border-radius: 4px; /* Roundness of the scrollbar thumb */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color when hovered */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-track {
+    background-color: #f4f4f4; /* Scrollbar track (background) color */
+    border-radius: 4px; /* Match the thumb roundness */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-track:hover {
+    background-color: #e0e0e0; /* Slightly darker track when hovered */
+  }
+
+  .loader {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    color: #050505;
+  }
+  
+  .highlighted-row {
+    /* background-color: #bebbbb; Light blue background */
+    background-color: #585858; 
+    color : white;
+  }
+
+  .skeleton-row td {
+    padding: 8px;
+  }
+  
+  .skeleton-loader {
+    height: 16px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    border-radius: 4px;
+    animation: loading 1.5s infinite;
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  table tr {
+    height: 40px;
+  }
+/* For Medium-Size Desktops (min-width: 1024px) */
+@media (min-width: 1024px) {
+
+  
+}
+
+/* For Larger Screens (min-width: 1440px) */
+@media (min-width: 1440px) {
+
+  .table-container {
+    max-height: 50vh;
+    min-height: 50vh;
+  }
+
+  .tbody-scroll {
+    max-height: 40vh;
+    min-height: 40vh;
+  }
+
+}
+
+/* For Ultra-Wide Monitors (min-width: 1920px) */
+@media (min-width: 1920px) {
+ 
+  .table-container {
+    max-height: 55vh;
+    min-height: 55vh;
+  }
+
+  .tbody-scroll {
+    max-height: 45vh;
+    min-height: 45vh;
+  }
+
+}
+

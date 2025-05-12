@@ -1,0 +1,106 @@
+.account-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    border-radius: 10px;
+    /* /* height: 10%; */
+   /* max-height: 100px;  */
+
+}
+
+.modal-body {
+  flex: 1; /* Makes the body take up available space */
+  overflow-y: auto; /* Adds vertical scrolling for table content if needed */
+}
+
+.div-tbody-container {
+  height: 100%; /* Ensure this container stretches fully */
+  width: 100%;
+}
+
+.table-body {
+  display: block; /* Allows the tbody to scroll */
+  height: 50vh; /* Set a fixed height for the table body */
+  overflow-y: auto; /* Enables scrolling for tbody when records grow */
+  width: 100%;
+}
+
+.account-table {
+  width: 100%; /* Ensure table occupies full modal width */
+  table-layout: fixed; /* Prevent table from resizing dynamically */
+  border-collapse: collapse;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container Styles - For Scrollable Table Body */
+.div-table-container {
+    max-height: 300px; /* Set a limit for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ddd; /* Optional for a clean border */
+    width: 100%; /* Ensures the container spans full width */
+    display: block; /* Ensures proper scrolling behavior */
+   }
+
+   /* Main Table Styles */
+   .account-table {
+    width: 100%;
+    table-layout: fixed; /* Ensures consistent column widths */
+    border-collapse: collapse; /* Removes extra spacing between table cells */
+    margin: 10px 0px;
+    border: 1px solid #ddd;
+   }
+
+   /* Header (Thead) Styles */
+   .account-table thead {
+    background-color: #f4f4f4; /* Optional: Light background for header */
+    display: table;
+    width: 100%;
+    table-layout: fixed; /* Ensures alignment with tbody */
+    position: sticky;
+    top: 0;
+    z-index: 10;
+   }
+   /* Row and Cell Styles */
+   .account-table th, .account-table td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd; /* Optional for cleaner cell separation */
+   }
+   .account-table th {
+    font-weight: bold;
+    background-color: #f4f4f4; /* Optional: Reiterate background for headers */
+   }
+   /* Tbody Styling */
+   .account-table tbody {
+    display: block;
+    width: 100%;
+    overflow-y: auto;
+    max-height: 220px;
+    overflow-x: hidden;
+   }
+   /* Make sure the rows inside tbody act as table rows */
+   .account-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+   }
+   /* Optional: Scrollbar Styling */
+   .div-table-container::-webkit-scrollbar {
+    width: 8px;
+   }
+   .div-table-container::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 4px;
+   }

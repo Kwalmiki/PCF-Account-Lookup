@@ -1,0 +1,629 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: "Segoe UI", "Segoe UI Web (West European)", -apple-system,
+      BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    /* font-weight: bold; */
+  }
+  
+  .input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .Clear_btn {
+    background-color: #f1f1f1;
+    padding: 7px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all ease-in-out 5s;
+    animation-duration: 2s;
+    color: black;
+    border: none;
+    font-weight: bold;
+  }
+  
+  .Clear_btn:hover {
+    background-color: whitesmoke;
+  }
+  
+  .searchBarContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .lookup-input {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #c7c7c7;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Segoe UI, Arial, sans-serif;
+    background-color: #f3f2f1;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  
+  .lookup-input:focus {
+    border-color: #0078d4;
+    outline: none;
+    box-shadow: 0 0 2px #0078d4;
+    background-color: white;
+  }
+  
+  .search-button {
+    margin-left: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    background-color: #0078d4;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #005a9e;
+  }
+  
+  .account-lookup-modal {
+    height: 70%;
+    width: 70%;
+    margin: 5% auto;
+    background-color: white;
+    padding: 20px 20px;
+    border-radius: 10px;
+    max-height: 70%;
+    /* overflow-y: auto;  */
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background */
+    backdrop-filter: blur(5px); /* Blurred background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  .modal-title {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    /* font-weight: bold; */
+  }
+  
+  /* Container Styles - For Scrollable Table Body */
+  .div-table-container {
+      max-height: 5vh; 
+      overflow-y: auto; /* Enable vertical scrolling */
+      border: 1px solid #ddd; /* Optional for a clean border */
+      width: 100%; /* Ensures the container spans full width */
+      display: block; /* Ensures proper scrolling behavior */
+      scrollbar-gutter: stable both-edges;
+  }
+  
+     /* Main Table Styles */
+  .account-table {
+      width: 100%;
+      table-layout: fixed; /* Ensures consistent column widths */
+      border-collapse: collapse; /* Removes extra spacing between table cells */
+      margin: 10px 0px;
+      border: 1px solid #ddd;
+      min-height: 65%;
+      /* background-color: #f4f4f4; */
+  }
+  
+     /* Header (Thead) Styles */
+  .account-table thead {
+      background-color: #f4f4f4; /* Optional: Light background for header */
+      display: table;
+      width: 100%;
+      table-layout: fixed; /* Ensures alignment with tbody */
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      width: calc(100% - 10px);
+      scrollbar-gutter: stable;
+      border-collapse: collapse;
+  }
+  
+  .account-table th:last-child {
+    width: calc(100% - 60px);
+  }
+  
+  /* Row and Cell Styles */
+  .account-table th, .account-table td {
+      padding: 8px;
+      text-align: left;
+      border: 1px solid #ddd; /* Optional for cleaner cell separation */
+  
+  }
+  
+  .account-table th {
+      /* font-weight: bold; */
+      background-color: #f4f4f4; /* Optional: Reiterate background for headers */
+  }
+  
+  /* Tbody Styling */
+  .account-table tbody {
+      display: block;
+      width: 100%;
+      overflow-y: auto;
+      /* max-height: 220px; */
+      overflow-x: hidden;
+      max-height: 38vh;
+      table-layout: fixed; 
+      border-collapse: collapse;
+      scrollbar-width: thin; /* For Firefox - sets a thin scrollbar */
+      scrollbar-color: #888 #f4f4f4;
+      background-color: white;
+  }
+  
+  .div-tbody-container table {
+    width: 100%; /* Match the width of the parent */
+    table-layout: fixed; /* Keep column widths consistent */
+  }
+     /* Make sure the rows inside tbody act as table rows */
+     .account-table tbody tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+     }
+     /* Optional: Scrollbar Styling
+     .div-table-container::-webkit-scrollbar {
+      width: 8px;
+     }
+     .div-table-container::-webkit-scrollbar-thumb {
+      background-color: #aaa;
+      border-radius: 4px;
+     } */
+  
+  .account-table th,
+  .account-table td {
+    
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .account-table tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  .big-column {
+    width: 40%; /* Adjust width as needed */
+  }
+  
+  .small-column {
+    width: 10%; /* Adjust width as needed */
+  }
+  
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .pagination-button {
+    padding: 6px 8px;
+    background-color: #008080;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+  }
+  
+  .pagination-button:hover {
+    background-color: #069999;
+  }
+  
+  span {
+    font: bold;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    color: black;
+  }
+  
+  .create-contact-button {
+    margin: 5px 0px;
+    padding: 8px 8px;
+    /* background-color: #008080; */
+    border-bottom: 1px solid #ccc;
+    background-color: #f1f1f1;
+    /* color: white; */
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+    border: none;
+    font-weight: bold;
+  }
+  
+  .create-contact-button:hover {
+    background-color: #d4d1d1e3;
+  }
+  
+  .pagination-div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .modal-footer {
+    display: flex;
+    justify-content: space-between; /* Align buttons on opposite sides */
+    padding: 10px;
+    border-top: 1px solid #ddd; /* Optional styling */
+    background-color: #f9f9f9; /* Optional background color */
+    position: sticky;
+    bottom: 0;
+  }
+  
+  .centered-text {
+    text-align: center;
+  }
+  
+  /* For tablets or small desktops (min-width: 768px) */
+  @media (min-width: 768px) {
+    .account-table tbody {
+      max-height: 38vh;
+    }
+  }
+  
+  /* For medium desktops or larger screens (min-width: 1024px) */
+  @media (min-width: 1024px) {
+    .account-table tbody {
+      max-height: 45vh;
+    }
+  }
+  
+  /* For extra-large screens (min-width: 1920px) */
+  @media (min-width: 1920px) {
+    .account-table tbody {
+      max-height: 60vh; /* Adjust for ultra-wide monitors */
+    }
+  }
+  
+  /* For Larger Screens (Monitors) */
+  @media (min-width: 1440px) { /* Adjust the width threshold for monitor resolutions */
+    .account-table tbody {
+        max-height: 50vh; /* Increase max-height for larger screens */
+    }
+  }
+  
+  /* Webkit Scrollbar Styling */
+  .div-tbody-container::-webkit-scrollbar {
+    width: 8px; /* Set the width of the vertical scrollbar */
+    height: 8px; /* Optional: Set the height of the horizontal scrollbar */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Thumb (scrollbar handle) color */
+    border-radius: 4px; /* Roundness of the scrollbar thumb */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color when hovered */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-track {
+    background-color: #f4f4f4; /* Scrollbar track (background) color */
+    border-radius: 4px; /* Match the thumb roundness */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-track:hover {
+    background-color: #e0e0e0; /* Slightly darker track when hovered */
+  }
+
+
+
+
+
+
+  /* new code  */
+  /* General Container Styling */
+.table-container {
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a clean look */
+    background-color: #ffffff; /* Light theme background */
+    display: flex;
+    flex-direction: column; /* Stack table and button vertically */
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Base Table Styling */
+  table.account.Table {
+    width: 100%;
+    border-collapse: collapse; /* Removes gaps between cells */
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+  
+  /* Header Styling */
+  thead th {
+    background-color: #0078d4; /* Light blue theme for header */
+    color: white;
+    padding: 12px;
+    text-transform: uppercase;
+    border: 1px solid #ddd;
+    letter-spacing: 0.5px;
+    text-align: left;
+    position: sticky; /* Keep header visible while scrolling */
+    top: 0;
+    z-index: 2; /* Ensure header stays above tbody scrolling content */
+  }
+  
+  /* Body Styling */
+  tbody {
+    display: block; /* Set tbody as a block for independent scrolling */
+    max-height: 300px; /* Limit height for vertical scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+    width: 100%; /* Ensure tbody takes up full table width */
+  }
+  
+  tbody tr {
+    display: table; /* Ensure rows retain table layout */
+    width: 100%; /* Row width matches table width */
+    table-layout: fixed; /* Consistent column widths */
+  }
+  
+  tbody tr:hover {
+    background-color: #f9f9f9; /* Subtle hover effect */
+    transition: background-color 0.3s ease;
+  }
+  
+  tbody td {
+    padding: 12px;
+    color: #333; /* Slightly dark font */
+    word-wrap: break-word; /* Prevents content overflow */
+    border: 1px solid #ddd;
+  }
+  
+  /* Pagination Controls */
+  .pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+  
+  .pagination-controls button {
+    padding: 10px 15px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .pagination-controls button:hover {
+    background-color: #444;
+    transform: scale(1.05);
+  }
+  
+  .pagination-controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pagination-controls span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Responsive Adjustments */
+  
+  /* Small Laptops (Max 1024px) */
+  @media (max-width: 1024px) {
+    tbody {
+      max-height: 200px; /* Reduce tbody height for small screens */
+    }
+  
+    table.account.Table {
+      font-size: 12px;
+    }
+  
+    thead th {
+      padding: 10px;
+      font-size: 12px;
+    }
+  
+    tbody td {
+      padding: 10px;
+    }
+  }
+  
+  /* Medium Screens (1024px to 1440px) */
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    tbody {
+      max-height: 250px; /* Moderate tbody height */
+    }
+  
+    table.account.Table {
+      font-size: 14px;
+    }
+  
+    thead th {
+      padding: 12px;
+    }
+  
+    tbody td {
+      padding: 12px;
+    }
+  }
+  
+  /* Large Monitors (Above 1440px) */
+  @media (min-width: 1440px) {
+    tbody {
+      max-height: 400px; /* Larger tbody height for large monitors */
+    }
+  
+    table.account.Table {
+      font-size: 16px;
+    }
+  
+    thead th {
+      padding: 14px;
+    }
+  
+    tbody td {
+      padding: 14px;
+    }
+  
+    .table-container {
+      max-width: 90%; /* Center the table within the viewport */
+      margin: 0 auto;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+/* Container Styles - For Scrollable Table Body */
+.div-table-container {
+  max-height: 5vh; 
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ddd; /* Optional for a clean border */
+  width: 100%; /* Ensures the container spans full width */
+  display: block; /* Ensures proper scrolling behavior */
+  scrollbar-gutter: stable both-edges;
+}
+
+ /* Main Table Styles */
+.account-table {
+  width: 100%;
+  table-layout: fixed; /* Ensures consistent column widths */
+  border-collapse: collapse; /* Removes extra spacing between table cells */
+  margin: 10px 0px;
+  border: 1px solid #ddd;
+  min-height: 30vh;
+  max-height: 30vh;
+  /* background-color: #f4f4f4; */
+}
+
+ /* Header (Thead) Styles */
+.account-table thead {
+  background-color: #f4f4f4; /* Optional: Light background for header */
+  display: table;
+  width: 100%;
+  table-layout: fixed; /* Ensures alignment with tbody */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  width: calc(100% - 10px);
+  scrollbar-gutter: stable;
+  border-collapse: collapse;
+}
+
+.account-table th:last-child {
+width: calc(100% - 60px);
+}
+
+/* Row and Cell Styles */
+.account-table th, .account-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd; /* Optional for cleaner cell separation */
+
+}
+
+.account-table th {
+  /* font-weight: bold; */
+  background-color: #f4f4f4; /* Optional: Reiterate background for headers */
+}
+
+/* Tbody Styling */
+.account-table tbody {
+  display: block;
+  width: 100%;
+  overflow-y: auto;
+  /* max-height: 220px; */
+  overflow-x: hidden;
+  max-height: 38vh;
+  table-layout: fixed; 
+  border-collapse: collapse;
+  scrollbar-width: thin; /* For Firefox - sets a thin scrollbar */
+  scrollbar-color: #888 #f4f4f4;
+  background-color: white;
+}
+
+.div-tbody-container table {
+width: 100%; /* Match the width of the parent */
+table-layout: fixed; /* Keep column widths consistent */
+}
+ /* Make sure the rows inside tbody act as table rows */
+ .account-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+ }
+ /* Optional: Scrollbar Styling
+ .div-table-container::-webkit-scrollbar {
+  width: 8px;
+ }
+ .div-table-container::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+ } */
+
+.account-table th,
+.account-table td {
+
+padding: 10px;
+border: 1px solid #ccc;
+text-align: left;
+}
+
+.account-table tr:hover {
+background-color: #f1f1f1;
+cursor: pointer;
+}

@@ -1,0 +1,226 @@
+/* --- Modal Overlay --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+
+   /* --- Modal Container --- */
+   .account-lookup-modal {
+    padding : 10px 5px;
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    color: black;
+    gap: 5px 0px;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+   }
+
+   /* --- Modal Header --- */
+   .modal-header {
+    border-bottom: 1px solid #ccc;
+    background-color: #f1f1f1;
+    color: black;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width : 100%;
+    /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); */
+   }
+
+   /* --- Close Button --- */
+   .close-button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: black;
+    cursor: pointer;
+   }
+
+   /* serach input clear btn */
+   .Clear-btn {
+    border-bottom: 1px solid #ccc;
+    background-color: #f1f1f1;
+    color: black;
+    padding: 6px 8px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all ease-in-out 0.5s;
+   }
+
+   .Clear-btn:hover {
+    background-color: #f1f1f100 !important;
+   }
+
+   .searchBarContainer {
+     width : 100%;
+   }
+
+   /* --- Table Container: Scrollable tbody --- */
+   .table-container {
+    margin: 10px 0px;
+    /* flex-grow: 1; */
+    width: 100%;
+    background-color: #f4f4f4;
+    /* border: 2px solid ; */
+    border-radius: 6px;
+    padding: 10px;
+    max-height: 50vh;
+    min-height: 50vh;
+    /* overflow-y: auto; */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Backdrop Shadow */
+   }
+
+   /* --- Table Styling --- */
+   .account-Table {
+    width: 100%;
+    border-collapse: collapse;
+    /* background: white; */
+    border: 1px solid #ddd;
+   }
+
+   /* --- Table Headers --- */
+    .Table-header {
+    background-color: #f1f1f12f !important;
+    position: sticky;
+    top: 0;
+    border-bottom: 1px solid #ccc;
+    /* background-color: #0047ab; */
+    color: black;
+    z-index: 2;
+    /* border-bottom: 1px solid #ccc; */
+   
+   }
+
+   .account-Table th {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+   }
+
+   /* --- Table Rows & Cells --- */
+   .account-Table td {
+    padding: 5px;
+    border: 1px solid #ddd;
+   }
+
+   /* --- Fix: Scrollable tbody but Keep Footer Visible --- */
+   .tbody-scroll {
+    display: block;
+    /* max-height: 200px;
+    min-height: 200px; */
+    overflow-y: auto;
+    overflow-x: hidden;
+   }
+
+   tbody tr:hover {
+    background-color: #f9f9f958;
+   }
+
+   .account-Table thead,
+   .account-Table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    cursor: pointer;
+   }
+
+   .account-Table thead,
+   .account-Table td {
+
+    width: 99%;
+   }
+
+   /* --- Modal Footer Always Visible --- */
+   .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: 2px solid #0056b3;
+    background: #007bff;
+   }
+   /* --- Pagination Buttons --- */
+   .pagination-controls {
+    display: flex;
+    gap: 8px;
+   }
+   .pagination-controls button {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background-color: #0047ab;
+    color: white;
+    cursor: pointer;
+    
+   }
+   .pagination-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+   }
+   /* --- Create New Account Button --- */
+   .create-contact-button {
+    /* background: #28a745; */
+    background-color: #0047ab;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+   }
+   
+   .create-contact-button:hover {
+    background-color: #235dad;
+   }
+
+   /* --- Responsive Adjustments --- */
+   @media (max-width: 768px) {
+    .account-lookup-modal {
+      width: 95%;
+    }
+    .table-container {
+      padding: 5px;
+    }
+    .modal-header,
+    .modal-footer {
+      padding: 10px;
+    }
+   }
+
+    /* Webkit Scrollbar Styling */
+  .div-tbody-container::-webkit-scrollbar {
+    width: 8px; /* Set the width of the vertical scrollbar */
+    height: 8px; /* Optional: Set the height of the horizontal scrollbar */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Thumb (scrollbar handle) color */
+    border-radius: 4px; /* Roundness of the scrollbar thumb */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Darker color when hovered */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-track {
+    background-color: #f4f4f4; /* Scrollbar track (background) color */
+    border-radius: 4px; /* Match the thumb roundness */
+  }
+  
+  .div-tbody-container::-webkit-scrollbar-track:hover {
+    background-color: #e0e0e0; /* Slightly darker track when hovered */
+  }
